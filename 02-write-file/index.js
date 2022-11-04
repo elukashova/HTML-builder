@@ -10,7 +10,7 @@ fs.writeFile(
     }
 );
 
-stdout.write('Прекрасное далёко... продолжи! \n');
+stdout.write('\n~~~ Продолжи песню (первая строчка уже будет в .txt): ~~~ \n==> Прекрасное далёко...\n');
 stdin.on('data', data => {
   let line = data.toString();
 
@@ -27,7 +27,10 @@ stdin.on('data', data => {
   )
 });
 
-process.on('SIGINT', () => process.exit());
+process.on('SIGINT', () => {
+  stdout.clearLine()
+  process.exit()
+});
 process.on('exit', () => stdout.write('\nОтлично спелись! До новых встреч!\n'));
 
 
