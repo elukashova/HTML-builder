@@ -59,9 +59,9 @@ const defCSS = fs.createWriteStream(cssPath);
     
     for (let style of styles) {
       const filePath = path.join(stylesPath, style.name);
-      const sourceFile = fs.createReadStream(filePath, 'utf8');
+      const sourceFile = await fsp.readFile(filePath, 'utf8');
 
-      sourceFile.pipe(defCSS);
+      defCSS.write(`${sourceFile}\n`);
     }
 
     console.log('CSS file has been created!');
