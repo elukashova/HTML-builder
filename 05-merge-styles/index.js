@@ -18,6 +18,8 @@ const path = require('path');
       endFile.write(`${sourceFile}\n`);
     }
 
+    console.log('bundle.css has been created!');
+
   } catch (err) {
       console.log(err);
   }
