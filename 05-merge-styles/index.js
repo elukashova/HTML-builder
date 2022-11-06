@@ -13,9 +13,9 @@ const path = require('path');
     
     for (let style of styles) {
       const filePath = path.join(stylesPath, style.name);
-      const sourceFile = fs.createReadStream(filePath, 'utf8');
+      const sourceFile = await fs.promises.readFile(filePath, 'utf8');
 
-      sourceFile.pipe(endFile);
+      endFile.write(`${sourceFile}\n`);
     }
 
   } catch (err) {
